@@ -65,7 +65,7 @@ void Ship::initializeGL(GLuint program) {
                            // Thruster trails
                            18, 19, 20,
                            21, 22, 23};
-  // clang-format on                           
+  // clang-format on
 
   // Generate VBO
   abcg::glGenBuffers(1, &m_vbo);
