@@ -16,53 +16,56 @@ void Ship::initializeGL(GLuint program) {
   m_translation = glm::vec2(0);
   m_velocity = glm::vec2(0);
 
+  // clang-format off
   std::array<glm::vec2, 24> positions{
       // Ship body
-      glm::vec2{-02.5f, +12.5f},
-      glm::vec2{-15.5f, +02.5f},
-      glm::vec2{-15.5f, -12.5f},
-      glm::vec2{-09.5f, -07.5f},
-      glm::vec2{-03.5f, -12.5f},
-      glm::vec2{+03.5f, -12.5f},
-      glm::vec2{+09.5f, -07.5f},
-      glm::vec2{+15.5f, -12.5f},
-      glm::vec2{+15.5f, +02.5f},
-      glm::vec2{+02.5f, +12.5f},
+      glm::vec2{-02.5f, +12.5f}, glm::vec2{-15.5f, +02.5f},
+      glm::vec2{-15.5f, -12.5f}, glm::vec2{-09.5f, -07.5f},
+      glm::vec2{-03.5f, -12.5f}, glm::vec2{+03.5f, -12.5f},
+      glm::vec2{+09.5f, -07.5f}, glm::vec2{+15.5f, -12.5f},
+      glm::vec2{+15.5f, +02.5f}, glm::vec2{+02.5f, +12.5f},
 
       // Cannon left
-      glm::vec2{-12.5f, +10.5f},
-      glm::vec2{-12.5f, +04.0f},
-      glm::vec2{-09.5f, +04.0f},
-      glm::vec2{-09.5f, +10.5f},
+      glm::vec2{-12.5f, +10.5f}, glm::vec2{-12.5f, +04.0f},
+      glm::vec2{-09.5f, +04.0f}, glm::vec2{-09.5f, +10.5f},
 
       // Cannon right
-      glm::vec2{+09.5f, +10.5f},
-      glm::vec2{+09.5f, +04.0f},
-      glm::vec2{+12.5f, +04.0f},
-      glm::vec2{+12.5f, +10.5f},
-
+      glm::vec2{+09.5f, +10.5f}, glm::vec2{+09.5f, +04.0f},
+      glm::vec2{+12.5f, +04.0f}, glm::vec2{+12.5f, +10.5f},
+      
       // Thruster trail (left)
-      glm::vec2{-12.0f, -07.5f},
-      glm::vec2{-09.5f, -18.0f},
+      glm::vec2{-12.0f, -07.5f}, 
+      glm::vec2{-09.5f, -18.0f}, 
       glm::vec2{-07.0f, -07.5f},
 
       // Thruster trail (right)
-      glm::vec2{+07.0f, -07.5f},
-      glm::vec2{+09.5f, -18.0f},
+      glm::vec2{+07.0f, -07.5f}, 
+      glm::vec2{+09.5f, -18.0f}, 
       glm::vec2{+12.0f, -07.5f},
-  };
+      };
 
   // Normalize
   for (auto &position : positions) {
     position /= glm::vec2{15.5f, 15.5f};
   }
 
-  const std::array indices{0, 1, 3, 1, 2, 3, 0, 3, 4, 0, 4, 5, 9, 0, 5, 9, 5, 6,
-                           9, 6, 8, 8, 6, 7,
+  const std::array indices{0, 1, 3,
+                           1, 2, 3,
+                           0, 3, 4,
+                           0, 4, 5,
+                           9, 0, 5,
+                           9, 5, 6,
+                           9, 6, 8,
+                           8, 6, 7,
                            // Cannons
-                           10, 11, 12, 10, 12, 13, 14, 15, 16, 14, 16, 17,
+                           10, 11, 12,
+                           10, 12, 13,
+                           14, 15, 16,
+                           14, 16, 17,
                            // Thruster trails
-                           18, 19, 20, 21, 22, 23};
+                           18, 19, 20,
+                           21, 22, 23};
+  // clang-format on                           
 
   // Generate VBO
   abcg::glGenBuffers(1, &m_vbo);
